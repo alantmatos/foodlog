@@ -1,15 +1,16 @@
 <% content_for :title do %>
-Foodlog - <%= DateTime.now %>
+Foodlog
 <% end %>
 
-<h1>Entries</h1>
-<%= link_to "New entry", new_entry_path %>
+<div class='columns is-mobile is-centered mt-5'>
+ <%= link_to "Create new Entry", new_entry_path, class:'button is-primary is-outlined' %>    
+
+</div>
 
 <div id="entries" class='columns mt-6 is-centered'>
   <% @entries.each do |entry| %>
-   <div class='column is-one-quarter'>
-      <div class='card'>
-      
+   <div class='column is-one-third'>
+      <div class='card'>      
       <header class='card-header'>
       <p class='card-header-title'>
       <%= entry.meal_types %>
@@ -27,12 +28,12 @@ Foodlog - <%= DateTime.now %>
 </div> 
 
 <div class='card-footer'>
-  <%= link_to "Edit", edit_entry_path(entry), class: 'card-footer-item' %> |
-  <%= link_to "Show", entry, class: 'card-footer-item' %>
-  <%= button_to "Destroy", entry, method: :delete, data:{ confirm: "Are you sure?"}, class: 'card-footer-item'  %>
+  <%= link_to "Edit", edit_entry_path(entry), class: 'card-footer-item button is-warning is-light is-outlined' %> 
+  <%= link_to "Show", entry, class: 'card-footer-item button is-success is-light is-outlined' %>
+  <%= link_to "Destroy", entry, method: :delete, data:{ turbo_method: :delete}, class: 'card-footer-item button is-danger is-light is-outlined'  %>
 </div>
 </div>
-     </div>
+</div>
   <% end %>
 </div>
 
